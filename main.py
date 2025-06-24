@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from io import BytesIO
 
 # Загружаем переменные окружения
+
 load_dotenv()
 BINANCE_API_KEY = os.getenv('BINANCE_API_KEY')
 BINANCE_API_SECRET = os.getenv('BINANCE_API_SECRET')
