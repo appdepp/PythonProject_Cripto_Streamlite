@@ -5,13 +5,16 @@ from dotenv import load_dotenv
 from binance.client import Client
 import matplotlib.pyplot as plt
 from io import BytesIO
+import streamlit as st
 
+BINANCE_API_KEY = st.secrets["BINANCE_API_KEY"]
+BINANCE_API_SECRET = st.secrets["BINANCE_API_SECRET"]
 
 # Загружаем переменные окружения
 
-load_dotenv()
-BINANCE_API_KEY = os.getenv('BINANCE_API_KEY')
-BINANCE_API_SECRET = os.getenv('BINANCE_API_SECRET')
+# load_dotenv()
+# BINANCE_API_KEY = os.getenv('BINANCE_API_KEY')
+# BINANCE_API_SECRET = os.getenv('BINANCE_API_SECRET')
 
 # Binance клиент
 client = Client(BINANCE_API_KEY, BINANCE_API_SECRET)
