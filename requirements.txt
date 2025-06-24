@@ -1,5 +1,5 @@
 asyncio~=3.4.3
-binance==5.1.0
+binance
 matplotlib
 python-binance==1.0.16
 python-dotenv~=1.0.1
