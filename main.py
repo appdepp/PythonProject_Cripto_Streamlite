@@ -6,6 +6,7 @@ from binance.client import Client
 import matplotlib.pyplot as plt
 from io import BytesIO
 
+
 # Загружаем переменные окружения
 
 load_dotenv()
