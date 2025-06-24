@@ -23,6 +23,31 @@ import streamlit as st
 from binance.client import Client
 from binance.exceptions import BinanceAPIException
 
+import streamlit as st
+from binance.client import Client
+from binance.exceptions import BinanceAPIException
+import traceback
+
+# Получаем ключи
+api_key = st.secrets["BINANCE_API_KEY"]
+api_secret = st.secrets["BINANCE_API_SECRET"]
+
+# Пробуем подключиться
+try:
+    client = Client(api_key, api_secret)
+    client.ping()
+    st.success("✅ Binance API подключен!")
+except BinanceAPIException as e:
+    st.error("🚫 Binance API отказал. Возможные причины:")
+    st.markdown("- ❌ Неверный API ключ или секрет")
+    st.markdown("- ❌ Ограничение по IP включено")
+    st.markdown("- ❌ Нет прав на чтение")
+    st.text(traceback.format_exc())
+except Exception as e:
+    st.error("❌ Другая ошибка:")
+    st.text(traceback.format_exc())
+
+
 BINANCE_API_KEY = st.secrets["BINANCE_API_KEY"]
 BINANCE_API_SECRET = st.secrets["BINANCE_API_SECRET"]
 
