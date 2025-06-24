@@ -18,7 +18,24 @@ BINANCE_API_SECRET = st.secrets["BINANCE_API_SECRET"]
 
 # Binance клиент
 client = Client(BINANCE_API_KEY, BINANCE_API_SECRET)
+import traceback
+import streamlit as st
+from binance.client import Client
+from binance.exceptions import BinanceAPIException
 
+BINANCE_API_KEY = st.secrets["BINANCE_API_KEY"]
+BINANCE_API_SECRET = st.secrets["BINANCE_API_SECRET"]
+
+try:
+    client = Client(BINANCE_API_KEY, BINANCE_API_SECRET)
+    client.ping()
+    st.success("✅ Успешно подключено к Binance API")
+except BinanceAPIException as e:
+    st.error(f"🚫 Binance API ошибка: {e.message}")
+    st.text(traceback.format_exc())
+except Exception as e:
+    st.error("❌ Неизвестная ошибка подключения")
+    st.text(traceback.format_exc())
 # Топ-10 криптовалютных пар
 TOP_CRYPTO_PAIRS = [
     'BTCUSDT', 'ETHUSDT', 'BNBUSDT', 'SOLUSDT', 'ADAUSDT', 'LTCUSDT',
